@@ -56,3 +56,14 @@ func TestIntSliceSort(t *testing.T) {
 		t.Errorf("IntSlice(mySlice).Sort() = %v, want %v", v, expected)
 	}
 }
+
+func TestNewItems(t *testing.T) {
+	old := []string{"test1", "test2", "test3"}
+	new := []string{"test1", "test2", "test3", "test4", "test5"}
+	expected := []string{"test4", "test5"}
+
+	out := NewItems(old, new)
+	if !reflect.DeepEqual(out, expected) {
+		t.Errorf("NewItems()=%v, want %v", out, expected)
+	}
+}

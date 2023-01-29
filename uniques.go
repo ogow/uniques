@@ -1,6 +1,8 @@
 package uniques
 
-import "sort"
+import (
+	"sort"
+)
 
 func StringSlice(ss []string) uniqueStrings {
 	keys := make(map[string]bool)
@@ -26,6 +28,23 @@ func IntSlice(ss []int) uniqueInts {
 		}
 	}
 	return uniques
+}
+
+func NewItems(oldSlice, newSlice []string) []string {
+	oldMap := make(map[string]bool)
+	var newi []string
+
+	for _, ele := range oldSlice {
+		oldMap[ele] = true
+	}
+
+	for _, el := range newSlice {
+		if _, ok := oldMap[el]; !ok {
+			newi = append(newi, el)
+		}
+	}
+
+	return newi
 }
 
 type uniqueStrings []string
